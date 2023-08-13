@@ -1,0 +1,21 @@
+*pseudo NMOS
+.include cmos_90nm.txt
+.param supply =1.5
+Vdd  net1   gnd  'SUPPLY'
+MN1 out in gnd gnd nmos W=0.5u L=90n
+MP1 out gnd net1 net1 pmos W=1u L=90n
+c1 out gnd 0.1p
+Vin in gnd pulse(0 supply 0 0.5p 0.5p 0.1u 0.2u)
+.tran 0.1ns  40ns 
+.meas tran Itotal INTEG i(Vdd) from=0N to=40N
+.meas tran inv_rise trig v(in)  val='SUPPLY/2'   rise=1 targ v(out) val='SUPPLY/2'   fall=1
+***** falling prop delay
+.meas tran inv_fall trig v(in)  val='SUPPLY/2'   rise=1 targ v(out) val='SUPPLY/2'   fall=1
+***** average prop delay
+.meas tran inv_avg_delay param = '(inv_rise+inv_fall)/2'
+.control
+run
+set color0=white
+plot v(out) v(in)
+.endc
+.end 

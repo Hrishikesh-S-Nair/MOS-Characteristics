@@ -1,0 +1,19 @@
+* Circuit Description *
+* dc supplies
+Vdd 1 0 DC +1.8V
+* input digital signal
+Vi 3 0 DC 0V
+* MOSFET circuit
+M1 2 3 0 0 nmos_enhancement_mosfet L=3um W=9um
+M2 1 2 2 0 nmos_depletion_mosfet L=9um W=3um
+* mosfet model statements (by default level 1)
+.model nmos_enhancement_mosfet nmos (kp=40u Vto=0.7V phi=0.6V gamma=1.1)
+.model nmos_depletion_mosfet nmos (kp=40u Vto=-3V phi=0.6V gamma=1.1)
+* Analysis Requests *
+.DC Vi 0V +1.8V 20mV
+* Output Requests *
+.control
+run
+PLOT V(2)
+.endc
+.end
