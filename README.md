@@ -55,6 +55,3 @@ Contributions to this project are highly encouraged! Whether you find issues or 
 
 This project is licensed under the [MIT License](LICENSE). You have the freedom to use, modify, and distribute the code according to the terms of the license.
 
----
-
-This repository aims to provide comprehensive Ngspice simulations to enhance your understanding of various MOSFET devices. By exploring the different simulation files, you can gain insights into the behavior of depletion NMOS, enhancement NMOS, standard NMOS, PMOS, and Pseudo NMOS circuits.
